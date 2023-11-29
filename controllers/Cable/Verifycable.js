@@ -1,7 +1,7 @@
 import { API_KEY, SECRET_KEY, PUBLIC_KEY, URL  } from "../../config/index.js";
 
 
-export const VerifyMeter =  async(req, res)=>{
+export const Verifycable =  async(req, res)=>{
   
   console.log(req.body)
   
@@ -18,7 +18,7 @@ export const VerifyMeter =  async(req, res)=>{
     },
     body: JSON.stringify(
       {
-        billersCode:req.body.meterNumber,
+        billersCode:req.body.phone,
         serviceID:req.body.product_code,
         type:"prepaid "
    }

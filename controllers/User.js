@@ -2,7 +2,7 @@
 import User from "../models/User.js";
 export const CurrentUser = async (req, res)=>{
     const _id = req.user._id
- const user =   await User.findOne({ _id})
+    const user =   await User.findOne({ _id})
  console.log(user)
 
 

@@ -23,7 +23,7 @@ app.use(cors());
 // });
 
 //import routes
-import {userRoute, powerRoute, buyRoute, trxRoute, analyticsRoute, airtimeRoute} from './routes/index.js';
+import {userRoute, powerRoute, buyRoute, trxRoute, analyticsRoute, airtimeRoute, dataRoute, cableRoute} from './routes/index.js';
 
 //routes
 app.use('/users', userRoute);
@@ -32,11 +32,13 @@ app.use('/buy', buyRoute )
 app.use('/trx', trxRoute )
 app.use('/analytics', analyticsRoute)
 app.use('/airtime', airtimeRoute)
+app.use('/data', dataRoute)
+app.use('/cable', cableRoute)
 
 
 
 app.get('/', (req, res) => {
-  res.send('Welcome to Borrowlite Api!')
+  res.send('Welcome to Borrowlite Api v2')
 })
 
 //connect to mongodb

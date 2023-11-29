@@ -1,10 +1,9 @@
 import pkg from 'jsonwebtoken';
 
 export const ValidateToken = async (req, res, next)=>{
-    const jwt  = pkg;
+    const jwt  =  pkg;
     let token  
     let authHeader = req.headers.Authorization || req.headers.authorization;
-    // console.log(authHeader)
     if(authHeader){
     if(authHeader && authHeader.startsWith('Bearer')){
         token = authHeader.split(' ')[1];

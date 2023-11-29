@@ -2,8 +2,7 @@ import { API_KEY, SECRET_KEY, PUBLIC_KEY, URL  } from "../../config/index.js";
 import moment from 'moment-timezone';
 import User from "../../models/User.js";
 
-export const BuyAirtime =  async(req, res)=>{
-
+export const getVariation =  async(req, res)=>{
    const id = req.user._id 
    let user = await User.findById({ _id: id })
    if(req.body.paymentmethod == "Wallet"){
@@ -12,7 +11,6 @@ export const BuyAirtime =  async(req, res)=>{
         return res.status(200).send({msg: 'insufficent balance please fund your wallet'})
        }
    }
-  
     function generateRequestId() {
         const today = new Date();
         const year = today.getFullYear();
@@ -33,24 +31,19 @@ export const BuyAirtime =  async(req, res)=>{
       
       const requestId = generateRequestId();
 
+      console.log(req.body)
+
+
     try{
-      fetch(`${URL}/pay`, { 
-        method: "Post", 
+      fetch(`${URL}/service-variations?serviceID=${req.body.product_code}`, { 
+        method: "Get", 
         headers:{
           // 'Authorization': 'Basic',
           "api-key": `${API_KEY}`, 
           "secret-key": `${SECRET_KEY}`,
            "public-key": `${PUBLIC_KEY}`,
            "Content-Type": "application/json",
-        },
-      body: JSON.stringify(
-        {
-          request_id:requestId,
-          serviceID:req.body.product_code,
-           amount:req.body.amount,
-             phone:req.body.phone
-      }),
-    
+        }, 
     }).then(res => res.json()).then(data => {
  console.log("data here", data)
      res.status(200).send(data);

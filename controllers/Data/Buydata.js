@@ -2,7 +2,7 @@ import { API_KEY, SECRET_KEY, PUBLIC_KEY, URL  } from "../../config/index.js";
 import moment from 'moment-timezone';
 import User from "../../models/User.js";
 
-export const BuyAirtime =  async(req, res)=>{
+export const Buydata =  async(req, res)=>{
 
    const id = req.user._id 
    let user = await User.findById({ _id: id })
@@ -46,9 +46,11 @@ export const BuyAirtime =  async(req, res)=>{
       body: JSON.stringify(
         {
           request_id:requestId,
+          billersCode:req.body.phone,
           serviceID:req.body.product_code,
            amount:req.body.amount,
-             phone:req.body.phone
+           phone:req.body.phone,
+           variation_code:req.body.variation_code,
       }),
     
     }).then(res => res.json()).then(data => {

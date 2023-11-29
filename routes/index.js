@@ -4,3 +4,5 @@ export * from './buyRoute.js';
 export * from './trxRoute.js';
 export * from './analyticsRoute.js';
 export * from  './airtimeRoute.js';
+export * from './dataRoute.js'
+export * from './cableRoute.js'

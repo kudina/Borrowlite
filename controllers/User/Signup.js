@@ -11,6 +11,8 @@ export const Signup = async (req, res) => {
     const apiKey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     const password = await hashPassword(req.body.password);
     const user = new User({ firstName, lastName, email, password, address, city, state, zip, phoneNumber, dateOfBirth, apiKey, userType, vendorCode});
+
+    console.log("here",user)
     try {
         //check if user with email already exists
         const userExists = await User.findOne({ phoneNumber });

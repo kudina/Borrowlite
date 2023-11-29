@@ -1,36 +1,36 @@
-import { api_key } from "../../config/index.js";
-import { saveTransaction } from "./Transaction.js";
+import { API_KEY, SECRET_KEY, PUBLIC_KEY, URL  } from "../../config/index.js";
+import User from '../../models/User.js';
 
 
-export const CheckBuyRef =  async(req, res)=>{
-  const user = req.user
-  const orderId = req.body.orderId;
-  const mdata = req.body
-  const amount = req.body.amount
-  const authCode = req.body.authCode
-  console.log("allhere",mdata)
-  res.set('Access-Control-Allow-Origin', '*');
-  var url = `https://smartrecharge.ng/api/v2/electric/?api_key=${api_key}&order_id=${orderId}&task=check_status`
- await fetch(url)
-  .then(res => res.json())
-  .then(data => { 
-  // console.log("all working",data)
-   if(data.server_message === "Transaction Successful"){
-    const payload = {
-        data,
-        mdata,
-        user,
-        amount,
-        res,
-        authCode
-    }
-   saveTransaction(payload)
-    }
-   const result =  res.status(200).send({ data });
-     return result 
+export const ReQuery =  async(req, res)=>{
+  try{
+    fetch(`${URL}/requery`, { 
+      method: "Post", 
+      headers:{
+        // 'Authorization': 'Basic',
+        "api-key": `${API_KEY}`, 
+        "secret-key": `${SECRET_KEY}`,
+         "public-key": `${PUBLIC_KEY}`,
+         "Content-Type": "application/json",
+      },
+    body: JSON.stringify(
+      {
+        request_id:req.body.request_id,
+    }),
+  
+  }).then( res => res.json()).then(async data => {
+  if(data.response_description == 'TRANSACTION SUCCESSFUL'){
+     res.status(200).send(data); 
+  }
+   
+  }).catch(err => {
+    console.log("there was an error ", err)
   })
-  .catch(err => {
-      res.status(401).send(err);
-  });
-} 
+
+  }catch(error){
+    console.log(error)
+    return res.status(500).json({msg: 'Error'})
+  }
+
+}
 

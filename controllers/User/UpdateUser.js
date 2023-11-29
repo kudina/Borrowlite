@@ -3,17 +3,14 @@ import User from "../../models/User.js";
 import Transaction from "../../models/Transaction.js";
 
 //get transaction by user api key
-export const UpdateUser = async (req, res) => {
-    const { apiKey } = req.body;
+export const updateUser = async (req, res) => {
+   const id = req.user._id
     try {
-        const Key = await User.findOne({ apiKey });
-        if (!Key || Key.apiKey !== apiKey || Key.apiKey === undefined) {
-            const result = await res.status(200).send({ error: "Invalid API Key, Access Denied" });
-            return result
+        const Key = await User.findOne({_id:id });
+        if(!Key){
+            return res.status(400).json({msg:"No user found"})
         }
-
-        console.log("userdata", Key)
-
+        
         // update autCode in user and save and send response
 
         Key.authCode = req.body.authCode;
