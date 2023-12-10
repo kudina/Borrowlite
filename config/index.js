@@ -4,26 +4,20 @@ export const api_key ='251be472'
 
 
 
+
+export const API_KEY = '0f7a509ae73512795c56ba022c07bd7f'
+export const SECRET_KEY = 'SK_84766bee726c903158e869a3ddfb0ab66a687e58734'
+export const PUBLIC_KEY = 'PK_859a201441b9ff816be9ed2327df6223a6e9c473e1f'
+export const URL = ' https://api-service.vtpass.com/api'
+
+
+
+
+
 // export const API_KEY = '30f573a649fef061105c1da0c7b7ff63'
-// export const SECRET_KEY = 'SK_116ccce4b7006ac87f3f52418967209279c874b3a36'
-// export const PUBLIC_KEY = 'PK_8654f233d2fbf1750a9a05b3ca2c61909b266b23c9f'
-// //export const URL = ' https://api-service.vtpass.com/api'
+// export const SECRET_KEY = 'SK_217f2f920ac502c8d496ce3cf96324b5d94fcdd4704'
+// export const PUBLIC_KEY = 'PK_225735076064242bfb986ba4414a6deccc2d0728527'
 // export const URL = 'https://sandbox.vtpass.com/api'
-
-
-
-
-
-// export const API_KEY = '0329e54818da32c4d33f19e3fd93cc66'
-// export const SECRET_KEY = 'SK_817486f132c117bcbcbc3ab52dadba97bf8ac75a397'
-// export const PUBLIC_KEY = 'PK_3196bcc0134e6ba8cf760e653d3657da191e33a94a2'
-// export const URL = ' https://api-service.vtpass.com/api'
-
-
-export const API_KEY = '89657b076e0093f9ae7e382738eedd15'
-export const SECRET_KEY = 'SK_842ab04ebd42fc5b1b6502dc1a7c68922ba53af610a'
-export const PUBLIC_KEY = 'PK_114d50e08ce6ce59fb398df1e2c4243d75bfa228fb5'
-export const URL = 'https://sandbox.vtpass.com/api'
 
 
 
